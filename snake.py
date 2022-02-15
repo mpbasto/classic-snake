@@ -10,6 +10,17 @@ RIGHT = 0
 
 
 class Snake:
+    """
+    Creates a new snake object (3 sea green-colored squares) whenever a Snake object is created.
+
+    - .build_snake(): builds default snake object
+    - .move(): configures the snake's animation
+    - .up(): sets snake's orientation to a 90º angle in relation to screen
+    - .down(): sets snake's orientation to a 270º angle in relation to screen
+    - .left(): sets snake's orientation to a 180º angle in relation to screen
+    - .right(): sets snake's orientation to a 0º angle in relation to screen
+
+    """
     def __init__(self):
         self.body = []
         self.build_snake()
