@@ -1,7 +1,7 @@
 from turtle import Turtle
 
 # Position and orientation constants
-INITIAL_POSITIONS = [0, -20, -40]
+INITIAL_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 STEP = 20
 UP = 90
 DOWN = 270
@@ -21,6 +21,7 @@ class Snake:
     - .right(): sets snake's orientation to a 0º angle in relation to screen
 
     """
+
     def __init__(self):
         self.body = []
         self.build_snake()
@@ -29,11 +30,22 @@ class Snake:
     def build_snake(self):
         """Creates default snake object."""
         for position in INITIAL_POSITIONS:
-            body_part = Turtle('square')
-            body_part.color('sea green')
-            body_part.penup()
-            body_part.setx(position)
-            self.body.append(body_part)
+            self.segment(position)
+
+
+    def segment(self, position):
+        """Creates segment for snake object"""
+        body_part = Turtle('square')
+        body_part.color('sea green')
+        body_part.penup()
+        body_part.goto(position)
+        body_part.speed('fastest')
+        self.body.append(body_part)
+
+
+    def extend(self):
+        """Adds a new segment to snake object."""
+        self.segment(self.body[-1].position()) # gets last segment's position and adds extra segment
 
     def move(self):
         """Configures snake's animation."""
